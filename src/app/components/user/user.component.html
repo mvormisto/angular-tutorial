@@ -1,0 +1,81 @@
+<div class="user-info">
+
+  <h2>Käyttäjän perustiedot</h2>
+
+  <div>
+    <h4>Nimi:</h4> <span>{{name}}</span>
+  </div>
+
+  <div class="user-info-age">
+    <h4>Ikä:</h4> <span>{{age}}</span> 
+  </div>
+
+  <div class="user-info-email">
+    <h4>Sähköposti:</h4> <span>{{email}}</span>
+  </div>
+
+  <div>
+    <h4>Postiosoite:</h4> <span>{{address.street}}, {{address.city}}, {{address.state}}</span>
+  </div>
+
+  <div>
+    <h4>Harrastukset:</h4>
+    <ul>
+        <li *ngFor="let hobby of hobbies">{{hobby}}</li>
+    </ul>
+  </div>
+
+</div>
+
+<button (click)="toggleEdit()">Muokkaa</button>
+
+<div *ngIf=isEdit class="user-edit">
+
+  <h2>Muokkaa käyttäjää</h2>
+
+  <form>
+    <div>
+      <label for="name">Nimi</label>
+      <input type="text" [(ngModel)]="name" name="name">
+    </div>
+    <div>
+      <label for="age">Ikä</label>
+      <input type="number" [(ngModel)]="age" name="age">
+      <button (click)="makeUserOlder()">+</button>
+      <button (click)="makeUserYounger()">-</button>
+    </div>
+    <div>
+      <label for="email">Sähköposti</label>
+      <input type="text" [(ngModel)]="email" name="email">
+    </div>
+  </form>
+
+  
+
+    <div>
+      <label for="hobby">Lisää harrastus: </label>
+      <input type="text" #hobby>
+      <a (click)="addHobby(hobby.value)">Lisää</a>
+    </div>
+
+
+  <div>
+    <h4>Poista harrastukset:</h4>
+    <ul>
+        <li *ngFor="let hobby of hobbies">
+          {{hobby}} <button class="remove-hobby-button" (click)="deleteHobby(hobby)" href="">x</button>
+        </li>
+    </ul>
+  </div>
+
+</div>
+<div>
+  <h2>Postaukset</h2>
+  <div *ngFor="let post of posts">
+    <h4>{{post.title}}</h4>
+    <span>ID: {{post.id}}</span>
+    <span>Käyttäjä: {{post.userId}}</span>
+    <p>{{post.body}}</p>
+  </div>
+</div>
+  

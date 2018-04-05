@@ -1,0 +1,10 @@
+.user-info > * > h4 {
+  display: inline;
+}
+.user-info-email button {
+  display: inline;
+}
+.remove-hobby-button {
+  text-decoration: none;
+  color: tomato;
+}
